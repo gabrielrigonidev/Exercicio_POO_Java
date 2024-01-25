@@ -1,6 +1,6 @@
 package application;
 
-import entities.Aluno;
+import entities.Student;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -10,26 +10,24 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        Aluno aluno = new Aluno();
-
         System.out.print("Your name: ");
-        aluno.nome = sc.nextLine();
+        String name = sc.nextLine();
 
-        System.out.print("First Note: ");
-        aluno.nota_1 = sc.nextDouble();
-        System.out.print("Second Note: ");
-        aluno.nota_2 = sc.nextDouble();
-        System.out.print("Third Note: ");
-        aluno.nota_3 = sc.nextDouble();
+        System.out.print("First Grade: ");
+        double grade1 = sc.nextDouble();
+        System.out.print("Second Grade: ");
+        double grade2 = sc.nextDouble();
+        System.out.print("Third Grade: ");
+        double grade3 = sc.nextDouble();
 
-        System.out.println("FINAL GRADE = " + aluno.totalPoints());
+        Student student = new Student(name, grade1, grade2, grade3);
+        System.out.println("FINAL GRADE = " + student.totalPoints());
 
-        if(aluno.totalPoints() > 60.0) {
+        if (student.totalPoints() >= 60.0) {
             System.out.println("PASS");
-        } else if (aluno.totalPoints() < 60.0){
+        } else {
             System.out.println("FAILED");
-            System.out.println("MISSING = " + aluno.missingPoints());
+            System.out.println("MISSING = " + student.missingPoints());
         }
-
     }
 }
